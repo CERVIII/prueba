@@ -137,14 +137,14 @@ All credentials are stored in environment variables defined in:
 ### Default Credentials
 
 **WordPress Administrator:**
-- **URL:** https://madel-va.42.fr/wordpress/wp-admin
-- **Username:** `may`
-- **Password:** `MayAdminPass789!`
-- **Email:** may@madel-va.42.fr
+- **URL:** https://pcervill.42.fr/wordpress/wp-admin
+- **Username:** `pcervill`
+- **Password:** `PcervillAdminPass789!`
+- **Email:** pcervill@madel-va.42.fr
 
 **WordPress Regular User:**
-- **Username:** `regular_user`
-- **Password:** `RegularUserPass321!`
+- **Username:** `cervi`
+- **Password:** `CerviPass321!`
 - **Email:** user@madel-va.42.fr
 
 **MariaDB Database:**

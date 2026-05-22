@@ -100,12 +100,12 @@ Once the containers are running, access the WordPress site at:
 ### Default Credentials
 
 **WordPress Admin:**
-- Username: `may`
-- Password: `MayAdminPass789!`
+- Username: `pcervill`
+- Password: `PcervillAdminPass789!`
 
 **WordPress Regular User:**
-- Username: `regular_user`
-- Password: `RegularUserPass321!`
+- Username: `cervi`
+- Password: `CerviPass321!`
 
 **Database:**
 - Database Name: `wordpress_db`
