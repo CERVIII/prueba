@@ -1,7 +1,7 @@
 # Edit login before launching !
-LOGIN =		login
+LOGIN =		pcervill
 DOMAIN =	${LOGIN}.42.fr
-DATA_PATH = /Users/CERVIII/Desktop/Inception-maaite/data/${LOGIN}
+DATA_PATH = /Home/${LOGIN}/data
 ENV =		LOGIN=${LOGIN} DATA_PATH=${DATA_PATH} DOMAIN=${LOGIN}.42.fr 
 
 all: up
@@ -25,25 +25,19 @@ logs:
 	cd srcs && docker compose logs && cd ..
 
 setup:
-	${ENV} ./configure-login.sh
-	${ENV} ./configure-hosts.sh
-	mkdir -p ${DATA_PATH}
-	mkdir -p ${DATA_PATH}/mariadb-data
-	mkdir -p ${DATA_PATH}/wordpress-data
+	sudo mkdir -p ${DATA_PATH}
+	sudo mkdir -p ${DATA_PATH}/mariadb-data
+	sudo mkdir -p ${DATA_PATH}/wordpress-data
 
 clean:
 	@echo "[*] Limpiando datos de volúmenes..."
-	rm -rf ${DATA_PATH}
+	sudo rm -rf ${DATA_PATH}
 	@echo "[✓] Datos removidos"
 
-fclean: down
+fclean: down clean
 	@echo "[*] Limpieza profunda en progreso..."
 	@echo "[*] Removiendo volúmenes Docker..."
 	docker volume rm srcs_mariadb-data srcs_wordpress-data 2>/dev/null || true
-	@echo "[*] Removiendo datos del proyecto..."
-	rm -rf ${DATA_PATH}
-	@echo "[*] Anonimizando archivos..."
-	${ENV} ./anonymize-login.sh
 	@echo "[*] Prunning del sistema Docker..."
 	docker system prune -f -a --volumes
 	@echo "[✓] Limpieza completa finalizada"
