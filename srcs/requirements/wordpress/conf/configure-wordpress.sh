@@ -34,7 +34,7 @@ else
     wp-cli.phar option update siteurl "https://${NGINX_HOST}" --path=${WP_PATH} --allow-root
     echo "[WP config] Creating WordPress default user..."
     wp-cli.phar user create ${WP_USER} ${WP_USER_EMAIL} --user_pass=${WP_USER_PASS} --role=subscriber --display_name=${WP_USER} --porcelain --path=${WP_PATH} --allow-root
-    echo "[WP config] Installing WordPress theme..."
+    echo "[WP config] Installing WordPress theme Neve..."    echo "[WP config] Installing WordPress theme..."
     wp-cli.phar theme install bravada --path=${WP_PATH} --activate --allow-root
     wp-cli.phar theme status bravada --path=${WP_PATH} --allow-root
 fi
