@@ -1,0 +1,20 @@
+#Example .env file -- Fill out example credentials for deployment
+
+NGINX_HOST=
+DATA_PATH=
+DB_HOST=
+DB_HOST_PASS=
+
+
+WP_DB_NAME=
+WP_DB_USER=
+WP_DB_PASS=
+
+WP_PATH=/var/www/html/wordpress/
+WP_TITLE=
+WP_ADMIN_USER=
+WP_ADMIN_PASS=
+WP_ADMIN_EMAIL=
+WP_USER=
+WP_USER_PASS=
+WP_USER_EMAIL=
