@@ -80,12 +80,12 @@ cd inception
 Edit the `Makefile` to set your 42 login:
 
 ```makefile
-LOGIN = madel-va    # Change this to your login
+LOGIN = pcervill    # Change this to your login
 ```
 
 This variable is used throughout the project for:
-- Domain name (`madel-va.42.fr`)
-- Data directory paths (`/home/madel-va/data/`)
+- Domain name (`pcervill.42.fr`)
+- Data directory paths (`/home/pcervill/data/`)
 - Configuration file personalization
 
 #### 3. Configure Environment Variables
@@ -110,17 +110,17 @@ Add the domain to your hosts file for local DNS resolution.
 
 **On Linux/WSL:**
 ```bash
-echo "127.0.0.1 madel-va.42.fr" | sudo tee -a /etc/hosts
+echo "127.0.0.1 pcervill.42.fr" | sudo tee -a /etc/hosts
 ```
 
 **On Windows (PowerShell as Administrator):**
 ```powershell
-Add-Content -Path C:\Windows\System32\drivers\etc\hosts -Value "127.0.0.1 madel-va.42.fr"
+Add-Content -Path C:\Windows\System32\drivers\etc\hosts -Value "127.0.0.1 pcervill.42.fr"
 ```
 
 Verify the entry:
 ```bash
-cat /etc/hosts | grep madel-va
+cat /etc/hosts | grep pcervill
 ```
 
 #### 5. Create Data Directories
@@ -128,13 +128,13 @@ cat /etc/hosts | grep madel-va
 The Makefile will create these automatically, but you can create them manually:
 
 ```bash
-sudo mkdir -p /home/madel-va/data/mariadb-data
-sudo mkdir -p /home/madel-va/data/wordpress-data
+sudo mkdir -p /home/pcervill/data/mariadb-data
+sudo mkdir -p /home/pcervill/data/wordpress-data
 ```
 
 Set appropriate permissions:
 ```bash
-sudo chown -R $USER:$USER /home/madel-va/data/
+sudo chown -R $USER:$USER /home/pcervill/data/
 ```
 
 ## Building and Launching
@@ -532,18 +532,18 @@ Since this project uses bind mounts, data is directly accessible:
 
 **MariaDB data:**
 ```bash
-ls -la /home/madel-va/data/mariadb-data/
+ls -la /home/pcervill/data/mariadb-data/
 ```
 
 **WordPress files:**
 ```bash
-ls -la /home/madel-va/data/wordpress-data/
+ls -la /home/pcervill/data/wordpress-data/
 ```
 
 ### Backing Up Volumes
 
 ```bash
-sudo tar -czf backup-$(date +%Y%m%d-%H%M%S).tar.gz /home/madel-va/data/
+sudo tar -czf backup-$(date +%Y%m%d-%H%M%S).tar.gz /home/pcervill/data/
 ```
 
 ### Removing Volumes
@@ -556,7 +556,7 @@ make clean  # Removes data directories
 
 Or manually:
 ```bash
-sudo rm -rf /home/madel-va/data/
+sudo rm -rf /home/pcervill/data/
 ```
 
 ## Managing Networks
@@ -594,12 +594,12 @@ docker exec nginx nc -zv wordpress 9000
 All persistent data is stored on the host machine in bind-mounted directories:
 
 1. **MariaDB Database Files:**
-   - **Host Path:** `/home/madel-va/data/mariadb-data/`
+   - **Host Path:** `/home/pcervill/data/mariadb-data/`
    - **Container Path:** `/var/lib/mysql/`
    - **Contents:** MySQL database files, tables, indexes
 
 2. **WordPress Files:**
-   - **Host Path:** `/home/madel-va/data/wordpress-data/`
+   - **Host Path:** `/home/pcervill/data/wordpress-data/`
    - **Container Path:** `/var/www/html/`
    - **Contents:** WordPress core, themes, plugins, uploads
 
@@ -779,7 +779,7 @@ docker exec wordpress mariadb -hmariadb -uwp_user -p${WP_DB_PASS} -e "SHOW DATAB
 
 1. Anonymize login information:
    ```bash
-   LOGIN=madel-va ./anonymize-login.sh
+   LOGIN=pcervill ./anonymize-login.sh
    ```
 
 2. Verify `.env` is not tracked:

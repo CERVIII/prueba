@@ -10,7 +10,7 @@ The Inception stack provides the following services:
 
 ### 1. WordPress Website
 - **Purpose:** Content Management System (CMS) for creating and managing website content
-- **Access:** https://madel-va.42.fr
+- **Access:** https://pcervill.42.fr
 - **Features:**
   - Full WordPress functionality
   - Custom theme (Bravada)
@@ -39,7 +39,7 @@ The Inception stack provides the following services:
 Before using the system, ensure:
 - Docker and Docker Compose are installed
 - You have access to the host machine with sudo privileges
-- The domain `madel-va.42.fr` is configured in your hosts file
+- The domain `pcervill.42.fr` is configured in your hosts file
 
 ### Starting the Infrastructure
 
@@ -90,7 +90,7 @@ To stop and remove all containers:
 make down
 ```
 
-This removes the containers but preserves the data volumes in `/home/madel-va/data/`.
+This removes the containers but preserves the data volumes in `/home/pcervill/data/`.
 
 ### Restarting Services
 
@@ -105,13 +105,13 @@ make start
 ### Accessing the WordPress Website
 
 1. Open your web browser
-2. Navigate to: **https://madel-va.42.fr**
+2. Navigate to: **https://pcervill.42.fr**
 3. Accept the security warning (due to self-signed certificate)
 4. You should see the WordPress homepage
 
 ### Accessing the WordPress Admin Panel
 
-1. Go to: **https://madel-va.42.fr/wordpress/wp-admin**
+1. Go to: **https://pcervill.42.fr/wordpress/wp-admin**
 2. Log in with admin credentials (see Credentials section below)
 3. You can now manage your website content
 
@@ -140,12 +140,12 @@ All credentials are stored in environment variables defined in:
 - **URL:** https://pcervill.42.fr/wordpress/wp-admin
 - **Username:** `pcervill`
 - **Password:** `PcervillAdminPass789!`
-- **Email:** pcervill@madel-va.42.fr
+- **Email:** pcervill@pcervill.42.fr
 
 **WordPress Regular User:**
 - **Username:** `cervi`
 - **Password:** `CerviPass321!`
-- **Email:** user@madel-va.42.fr
+- **Email:** user@pcervill.42.fr
 
 **MariaDB Database:**
 - **Database Name:** `wordpress_db`
@@ -232,7 +232,7 @@ cd srcs && docker compose logs mariadb
 
 **1. Check NGINX is responding:**
 ```bash
-curl -k https://madel-va.42.fr
+curl -k https://pcervill.42.fr
 ```
 You should see HTML output from WordPress.
 
@@ -251,13 +251,13 @@ docker exec mariadb mariadb -uwp_user -pWordPressDBPass456! wordpress_db -e "SEL
 ### Backing Up Data
 
 All persistent data is stored in:
-- **MariaDB data:** `/home/madel-va/data/mariadb-data/`
-- **WordPress files:** `/home/madel-va/data/wordpress-data/`
+- **MariaDB data:** `/home/pcervill/data/mariadb-data/`
+- **WordPress files:** `/home/pcervill/data/wordpress-data/`
 
 To create a backup:
 
 ```bash
-sudo tar -czf backup-$(date +%Y%m%d).tar.gz /home/madel-va/data/
+sudo tar -czf backup-$(date +%Y%m%d).tar.gz /home/pcervill/data/
 ```
 
 ### Restoring from Backup
@@ -307,24 +307,24 @@ Type `exit` to leave the container shell.
 
 WordPress files are accessible on the host at:
 ```bash
-ls -la /home/madel-va/data/wordpress-data/wordpress/
+ls -la /home/pcervill/data/wordpress-data/wordpress/
 ```
 
 You can edit theme files, plugins, or configuration directly:
 ```bash
-sudo nano /home/madel-va/data/wordpress-data/wordpress/wp-config.php
+sudo nano /home/pcervill/data/wordpress-data/wordpress/wp-config.php
 ```
 
 ## Troubleshooting
 
-### Problem: Cannot access https://madel-va.42.fr
+### Problem: Cannot access https://pcervill.42.fr
 
 **Solutions:**
 1. Check that containers are running: `make status`
 2. Verify hosts file entry:
    - Windows: `C:\Windows\System32\drivers\etc\hosts`
    - Linux: `/etc/hosts`
-   - Should contain: `127.0.0.1 madel-va.42.fr`
+   - Should contain: `127.0.0.1 pcervill.42.fr`
 3. Check NGINX is listening on port 443:
    ```bash
    docker exec nginx netstat -tlnp | grep 443
@@ -355,7 +355,7 @@ sudo nano /home/madel-va/data/wordpress-data/wordpress/wp-config.php
 This is **expected behavior**. The project uses a self-signed SSL certificate, which browsers don't trust by default.
 
 **To proceed:**
-- **Chrome/Edge:** Click "Advanced" → "Proceed to madel-va.42.fr (unsafe)"
+- **Chrome/Edge:** Click "Advanced" → "Proceed to pcervill.42.fr (unsafe)"
 - **Firefox:** Click "Advanced" → "Accept the Risk and Continue"
 
 For production environments, you would use a certificate from a trusted Certificate Authority (e.g., Let's Encrypt).
@@ -394,7 +394,7 @@ This shows real-time CPU, memory, and network usage for all containers.
 1. **Change default passwords** in production environments
 2. **Use Docker secrets** instead of `.env` files for sensitive data in production
 3. **Keep software updated:** Rebuild images periodically to get security updates
-4. **Restrict file permissions:** Ensure `/home/madel-va/data/` has appropriate permissions
+4. **Restrict file permissions:** Ensure `/home/pcervill/data/` has appropriate permissions
 5. **Use a real SSL certificate** from a trusted CA in production
 6. **Implement firewall rules** to restrict access to port 443
 7. **Regular backups:** Schedule automated backups of the data directories

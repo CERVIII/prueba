@@ -50,7 +50,7 @@ The entire infrastructure is deployed using Docker Compose, with each service ru
 3. **Configure environment variables:**
    
    The `.env` file in `srcs/` contains all necessary environment variables. The default values are already set up, but you should review and customize them if needed:
-   - Domain name (default: `madel-va.42.fr`)
+   - Domain name (default: `pcervill.42.fr`)
    - Database credentials
    - WordPress admin credentials
    - Data storage path
@@ -59,12 +59,12 @@ The entire infrastructure is deployed using Docker Compose, with each service ru
    
    On **Windows** (PowerShell as Administrator):
    ```powershell
-   Add-Content -Path C:\Windows\System32\drivers\etc\hosts -Value "127.0.0.1 madel-va.42.fr"
+   Add-Content -Path C:\Windows\System32\drivers\etc\hosts -Value "127.0.0.1 pcervill.42.fr"
    ```
    
    On **Linux/WSL**:
    ```bash
-   echo "127.0.0.1 madel-va.42.fr" | sudo tee -a /etc/hosts
+   echo "127.0.0.1 pcervill.42.fr" | sudo tee -a /etc/hosts
    ```
 
 5. **Build and launch the infrastructure:**
@@ -82,7 +82,7 @@ The entire infrastructure is deployed using Docker Compose, with each service ru
 
 Once the containers are running, access the WordPress site at:
 
-**https://madel-va.42.fr**
+**https://pcervill.42.fr**
 
 ⚠️ Your browser will show a security warning due to the self-signed SSL certificate. Accept the risk to proceed.
 
@@ -154,8 +154,8 @@ MariaDB Container (MySQL on port 3306)
 
 Two Docker volumes ensure data persists across container restarts:
 
-- `mariadb-data` → `/home/madel-va/data/mariadb-data` (database files)
-- `wordpress-data` → `/home/madel-va/data/wordpress-data` (WordPress files)
+- `mariadb-data` → `/home/pcervill/data/mariadb-data` (database files)
+- `wordpress-data` → `/home/pcervill/data/wordpress-data` (WordPress files)
 
 These volumes use bind mounts to the host filesystem for easy backup and inspection.
 
@@ -210,7 +210,7 @@ These volumes use bind mounts to the host filesystem for easy backup and inspect
 
 **Bind Mounts** (used in this project) are chosen because:
 
-- **Transparency:** Data is stored in a known host location (`/home/madel-va/data/`)
+- **Transparency:** Data is stored in a known host location (`/home/pcervill/data/`)
 - **Easy Access:** Files can be inspected and backed up directly from the host
 - **Subject Requirement:** Project specification requires volumes in `/home/login/data`
 - **Development:** Easier to modify and debug files during development
